@@ -11,7 +11,12 @@ import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.util.HashMap;
+
+
 public class MainActivity extends AppCompatActivity {
+
+    static HashMap<String, String> userNameAndPassword = new HashMap<>();
 
     public static final String Tag = "TAG";
     @Override
@@ -39,6 +44,16 @@ public class MainActivity extends AppCompatActivity {
                 final String email1 = email.getText().toString();
                 String password1 = password.getText().toString();
                 String confirm = confirm_password.getText().toString();
+
+                if (password1.equals(confirm)) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Sign Up Successful", Toast.LENGTH_SHORT);
+                    toast.show();
+                    userNameAndPassword.put(username1, password1);
+                } else {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Passwords don't match", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
+
 
             }
         });
